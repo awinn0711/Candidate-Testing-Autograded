@@ -32,15 +32,24 @@ for (let i = 0; i < questions.length; i++) {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-if (candidateAnswer === correctAnswer) {
-  console.log ("That is correct. Sally Ride was the first American woman in space.");
-} else {
-  console.log ("Incorrect.");
+let score = 0;
+let caseInsensitiveCandidateAnswers = candidateAnswers.join(",").toLowerCase().split(",");
+let caseInsensitiveCorrectAnswers = correctAnswers.join(",").toLowerCase().split(",");
+
+
+for (let i = 0; i < candidateAnswers.length; i++) {
+  if (caseInsensitiveCandidateAnswers[i] === caseInsensitiveCorrectAnswers[i]) {
+    score += 1;
+  }
 }
 
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
+  let grade = score / questions.length * 100;  //TODO 3.2 use this variable to calculate the candidates score.
+  if (grade >= 80) {
+    console.log(`Congratulations! You scored ${grade}%. You pass.`);
+  } else {
+    console.log(`You scored ${grade}%. You need at least 80% to pass.`)
+  }
 
   return grade;
 }
