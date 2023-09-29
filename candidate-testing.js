@@ -27,6 +27,9 @@ function askQuestion() {
 for (let i = 0; i < questions.length; i++) {
   candidateAnswers.push(input.question(questions[i]));
 }
+console.log(`The correct answers are ${correctAnswers}.
+You answered ${candidateAnswers}`);
+
 }
 
 function gradeQuiz(candidateAnswers) {
